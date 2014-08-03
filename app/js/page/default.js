@@ -7,6 +7,7 @@ define(function (require) {
    */
 
   var dataInstagram = require('component_data/data_instagram');
+  var uiShowTaggedPhotos = require('component_ui/ui_request_tagged_photos');
 
   /**
    * Module exports
@@ -19,6 +20,7 @@ define(function (require) {
    */
 
   function initialize() {
+    uiShowTaggedPhotos.attachTo('[data-input="tag"]');
     dataInstagram.attachTo(document);
   }
 
