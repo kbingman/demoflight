@@ -27,7 +27,7 @@ define(function(require) {
       return $.ajax(xhr);
     };
 
-    this.getTaggedData = function(e, data){
+    this.getTaggedImages = function(e, data){
       var path = 'tags/' + data.tag + '/media/recent';
       var options = {
         data: { client_id: this.attr.clientId }
@@ -35,12 +35,12 @@ define(function(require) {
       var request = this.request(path, options);
 
       request.done(function(response){
-        this.trigger('uiShowTaggedImages', response);
+        this.trigger(document, 'uiShowTaggedImages', response);
       });
     };
 
     this.after('initialize', function() {
-      this.on('needsTaggedImages', this.getTaggedData)
+      this.on('needsTaggedImages', this.getTaggedImages);
     });
   }
 
