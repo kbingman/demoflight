@@ -9,7 +9,8 @@ requirejs.config({
   baseUrl: '/base/app/bower_components',
 
   paths: {
-    'component': '../js/component',
+    'component_ui': '../js/component_ui',
+    'component_data': '../js/component_data',
     'page': '../js/page'
   },
 
