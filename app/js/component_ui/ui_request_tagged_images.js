@@ -12,6 +12,7 @@ define(function(require) {
 
     this.attributes({
       'tagInput': '[name="tag"]'
+      'searchButton': '[data-button]'
     });
 
     this.requestTag = function(e, data){
@@ -23,7 +24,7 @@ define(function(require) {
     };
 
     this.after('initialize', function() {
-      this.on('submit', this.requestTag);
+      this.on('searchButton', 'click', this.requestTag);
     });
   }
 

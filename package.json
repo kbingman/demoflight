@@ -20,7 +20,7 @@
   "scripts": {
     "livereload": "gulp",
     "server": "static app",
-    "test": "karma start --single-run --browsers PhantomJS",
+    "test": "karma start --single-run --browsers Chrome",
     "watch": "npm run server > server.log & npm run livereload",
     "watch-test": "karma start"
   }
