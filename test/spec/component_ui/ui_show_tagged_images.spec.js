@@ -17,7 +17,7 @@ describeComponent('component_ui/ui_show_tagged_images', function () {
           },
           thumbnail: {
             height: 150,
-            url: '/thumbnail.jpg',
+            url: 'http://scontent-b.cdninstagram.com/hphotos-xpa1/t51.2885-15/10518086_543462722424605_414045826_s.jpg',
             width: 150
           }
         },
@@ -27,11 +27,11 @@ describeComponent('component_ui/ui_show_tagged_images', function () {
     });
   });
 
-  it('should add an image on "uiShowTaggedImages"', function () {
+  it('should add an image on <uiShowTaggedImages>', function () {
     expect(this.component.$node.find('img').length).toEqual(1);
   });
 
   it('should add the correct size to the img src', function () {
-    expect(this.component.$node.find('img').attr('src')).toEqual('/thumbnail.jpg');
+    expect(this.component.$node.find('img').attr('src')).toEqual('http://scontent-b.cdninstagram.com/hphotos-xpa1/t51.2885-15/10518086_543462722424605_414045826_s.jpg');
   });
 });

@@ -11,12 +11,13 @@ define(function(require) {
   function requestTaggedImages() {
 
     this.attributes({
-      'tagInput': '[name="tag"]'
+      'tagInput': '[name="tag"]',
       'searchButton': '[data-button]'
     });
 
     this.requestTag = function(e, data){
       e.preventDefault();
+
       var tag = this.select('tagInput').val();
       this.trigger('needsTaggedImages', {
         tag: tag
@@ -24,7 +25,7 @@ define(function(require) {
     };
 
     this.after('initialize', function() {
-      this.on('searchButton', 'click', this.requestTag);
+      this.on('submit', this.requestTag);
     });
   }
 
