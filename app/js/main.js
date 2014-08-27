@@ -6,7 +6,8 @@ requirejs.config({
     'component_data': '../js/component_data',
     'component_ui': '../js/component_ui',
     'mixin': '../js/mixin',
-    'page': '../js/page'
+    'page': '../js/page',
+    'settings': '../js/settings'
   }
 });
 

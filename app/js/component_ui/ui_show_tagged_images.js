@@ -15,7 +15,8 @@ define(function(require) {
     });
 
     this.renderImages = function(e, response){
-      var images = response.data.map(function(img){
+      var images = response.data || [];
+      var images = images.map(function(img){
         var $image = $('<img/>').attr('src', img.images.thumbnail.url);
         return $image;
       });

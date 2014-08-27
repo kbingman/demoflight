@@ -11,7 +11,7 @@ define(function(require) {
   function requestTaggedImages() {
 
     this.attributes({
-      'tagInput': '[name="tag"]',
+      'tagInput': 'input[name="tag"]',
       'searchButton': '[data-button]'
     });
 

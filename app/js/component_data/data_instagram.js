@@ -5,38 +5,38 @@
 define(function(require) {
 
   var component = require('flight/lib/index').component;
-  var utils = require('flight/lib/index').utils;
+  var withRequest = require('mixin/with_request');
 
-  return component(dataInstagram);
+  return component(withRequest, dataInstagram);
 
   function dataInstagram() {
 
     this.attributes({
       baseUrl: 'https://api.instagram.com/v1/',
-      clientId: 'cc4b947cbca8405fa1b56f7df01c3677'
+      clientId: null
     });
-
-    this.request = function(path, options){
-      var xhr = {
-        url: this.attr.baseUrl + path,
-        jsonp: 'callback',
-        dataType: 'jsonp',
-        context: this
-      };
-      xhr = utils.merge(xhr, options);
-      return $.ajax(xhr);
-    };
 
     this.getTaggedImages = function(e, data){
       var path = 'tags/' + data.tag + '/media/recent';
+      alert(this.attr.clientId)
       var options = {
         data: { client_id: this.attr.clientId }
       };
       var request = this.request(path, options);
 
-      request.done(function(response){
-        this.trigger(document, 'uiShowTaggedImages', response);
-      });
+      request.error(function(response){
+              console.log('error', response)
+          })
+          .done(function(response){
+            if (response.meta.error_message){
+              this.trigger(document, 'uiShowErrorMessage', {
+                message: response.meta.error_message
+              });
+            } else {
+              this.trigger(document, 'uiClearMessage');
+            }
+            this.trigger(document, 'uiShowTaggedImages', response);
+          });
     };
 
     this.after('initialize', function() {
