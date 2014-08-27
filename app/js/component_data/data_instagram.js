@@ -18,7 +18,6 @@ define(function(require) {
 
     this.getTaggedImages = function(e, data){
       var path = 'tags/' + data.tag + '/media/recent';
-      alert(this.attr.clientId)
       var options = {
         data: { client_id: this.attr.clientId }
       };
