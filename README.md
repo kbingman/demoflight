@@ -6,6 +6,9 @@
 npm install & bower install
 ```
 
+## Instagram API Key
+You can copy the `app/js/settings_example.js` file and add you own instagram key (available at 
+http://instagram.com/developer).
 
 ## Static file server
 
