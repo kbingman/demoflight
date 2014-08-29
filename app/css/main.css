@@ -1,4 +1,7 @@
-
 body {
   background: white;
+}
+
+.thumbnails {
+  margin: 2rem 0;
 }

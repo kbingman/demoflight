@@ -5,6 +5,8 @@
 define(function(require) {
 
   var component = require('flight/lib/index').component;
+  var hogan = require('hogan');
+  var thumbnail = require('text!templates/_thumbnail.mustache');
 
   return component(requestTaggedImages);
 
@@ -15,14 +17,19 @@ define(function(require) {
     });
 
     this.renderImages = function(e, response){
-      var images = response.data || [];
-      var images = images.map(function(img){
-        var $image = $('<img/>').attr('src', img.images.thumbnail.url);
-        return $image;
+      var data = response.data || [];
+      var images = data.map(function(img){
+        return {
+          'href': img.link,
+          'src': img.images.thumbnail.url
+        };
       });
+      var template = hogan.compile(thumbnail);
+      debugger
+      console.log(template.render({ images: images }));
       this.$node
         .empty()
-        .html(images);
+        .html(template.render({ images: images }));
     };
 
     this.after('initialize', function() {

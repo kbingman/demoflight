@@ -13,12 +13,14 @@
 
     <div class="container">
       <h1>Enter a tag to begin searching</h1>
-      <form data-input="tag">
-        <input type="text" name="tag" placeholder="Enter tag" />
-        <button data-button>Search</button>
+      <form data-input="tag" class="input-group">
+        <input type="text" class="form-control" name="tag" placeholder="Enter tag" />
+        <span class="input-group-btn">
+          <button data-button class="btn" type="submit">Search</button>
+        </span>
       </form>
       <div data-container="messages">&nbsp;</div>
-      <div data-container="thumbnails"></div>
+      <div class="row thumbnails" data-container="thumbnails"></div>
     </div>
 
     <!--[if lt IE 9]>

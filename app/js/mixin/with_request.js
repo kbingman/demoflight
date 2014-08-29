@@ -12,6 +12,7 @@ define(function(require) {
   function withRequest() {
 
     this.request = function(path, options){
+      console.log(this.attr.baseUrl + path);
       var xhr = {
         url: this.attr.baseUrl + path,
         jsonp: 'callback',

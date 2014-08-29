@@ -4,10 +4,10 @@
 
 define(function(require) {
 
-  var component = require('flight/lib/index').component;
+  var flight = require('flight/lib/index');
   var withRequest = require('mixin/with_request');
 
-  return component(withRequest, dataInstagram);
+  return flight.component(withRequest, dataInstagram);
 
   function dataInstagram() {
 
@@ -24,18 +24,17 @@ define(function(require) {
       var request = this.request(path, options);
 
       request.error(function(response){
-              console.log('error', response)
-          })
-          .done(function(response){
-            if (response.meta.error_message){
-              this.trigger(document, 'uiShowErrorMessage', {
-                message: response.meta.error_message
-              });
-            } else {
-              this.trigger(document, 'uiClearMessage');
-            }
-            this.trigger(document, 'uiShowTaggedImages', response);
+        console.log('error', response);
+      }).done(function(response){
+        if (response.meta.error_message){
+          this.trigger(document, 'uiShowErrorMessage', {
+            message: response.meta.error_message
           });
+        } else {
+          this.trigger(document, 'uiClearMessage');
+        }
+        this.trigger(document, 'uiShowTaggedImages', response);
+      });
     };
 
     this.after('initialize', function() {
