@@ -25,8 +25,7 @@ define(function(require) {
         };
       });
       var template = hogan.compile(thumbnail);
-      debugger
-      console.log(template.render({ images: images }));
+
       this.$node
         .empty()
         .html(template.render({ images: images }));
